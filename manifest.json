@@ -1,0 +1,39 @@
+{
+    "name": "Pinned Message Extension",
+    "version": "0.0.1",
+    "manifest_version": 3,
+    "icons": {
+        "128": "message.png"
+    },
+    "action": {
+        "default_icon": "message.png",
+        "default_popup": "popup.html",
+        "default_title": "Pinned Message Extension"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "options_page": "options.html",
+    "permissions": [
+        "tabs",
+        "storage",
+        "activeTab",
+        "webRequest",
+        "webNavigation",
+        "cookies"
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
+    }
+}
